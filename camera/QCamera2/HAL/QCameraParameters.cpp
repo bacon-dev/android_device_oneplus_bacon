@@ -1290,6 +1290,10 @@ int32_t QCameraParameters::setVideoSize(const QCameraParameters& params)
 
             // set the new value
             CameraParameters::setVideoSize(width, height);
+
+            // Set preview size to video size for 4k
+            if (m_bRecordingHint && ((width * height) >= (3840 * 2160)))
+                CameraParameters::setPreviewSize(width, height);
             return NO_ERROR;
         }
     }
