@@ -5197,7 +5197,7 @@ int32_t QCameraParameters::setSharpness(int sharpness)
     updateParamEntry(KEY_QC_SHARPNESS, val);
     ALOGV("%s: Setting sharpness %s", __func__, val);
 
-    int32_t value = sharpness;
+    int32_t value = 6;//sharpness;
     return AddSetParmEntryToBatch(m_pParamBuf,
                                   CAM_INTF_PARM_SHARPNESS,
                                   sizeof(value),
