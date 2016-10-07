@@ -281,4 +281,12 @@
 
     <!-- Integer indicating wpa_supplicant scan interval in milliseconds -->
     <integer translatable="false" name="config_wifi_supplicant_scan_interval">40000</integer>
+
+    <!-- Default list of files pinned by the Pinner Service -->
+    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+        <item>"/system/framework/arm/boot-framework.oat"</item>
+        <item>"/system/framework/oat/arm/services.odex"</item>
+        <item>"/system/framework/arm/boot.oat"</item>
+        <item>"/system/framework/arm/boot-core-libart.oat"</item>
+    </string-array>
 </resources>
