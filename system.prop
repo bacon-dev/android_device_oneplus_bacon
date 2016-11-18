@@ -55,6 +55,7 @@ ro.vendor.qti.sys.fw.bservice_enable=true
 
 # Network
 persist.data.netmgrd.qos.enable=true
+persist.data.qmi.adb_logmask=0
 persist.data.tcpackprio.enable=true
 ro.data.large_tcp_window_size=true
 
