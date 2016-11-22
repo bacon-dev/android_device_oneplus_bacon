@@ -236,7 +236,9 @@ PRODUCT_PACKAGES += \
     ueventd.bacon.rc \
 
 PRODUCT_PACKAGES += \
-    init.qcom.bt.sh
+    init.qcom.bt.sh \
+    init.qcom.devstart.sh \
+    init.qcom.devwait.sh
 
 # Seccomp
 PRODUCT_COPY_FILES += \

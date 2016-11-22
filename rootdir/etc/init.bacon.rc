@@ -24,7 +24,9 @@ on early-init
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
-    write /sys/kernel/boot_adsp/boot 1
+
+    # Busy loop to wait for devices booted by devstart_sh just in case device not ready
+    exec - root root system -- /system/etc/init.qcom.devwait.sh
 
 on boot
     # Bluetooth
@@ -104,6 +106,10 @@ on boot
     # Touchscreen
     chown system system /proc/touchpanel/double_tap_enable
     chmod 0660 /proc/touchpanel/double_tap_enable
+
+on post-fs
+    # Start devices by sysfs trigger
+    start devstart_sh
 
 on post-fs-data
     # Torch
@@ -217,6 +223,13 @@ service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
     group root
+
+service devstart_sh /system/etc/init.qcom.devstart.sh
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
 
 service charger /charger
     class charger
