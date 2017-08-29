@@ -175,6 +175,10 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     libxml2
 
+# Keylayout
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/synaptics-rmi-ts.kl:system/usr/keylayout/synaptics-rmi-ts.kl
+
 # NFC
 ifeq ($(TARGET_BUILD_VARIANT),user)
     NFCEE_ACCESS_PATH := $(LOCAL_PATH)/configs/nfcee_access.xml
