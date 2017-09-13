@@ -9,6 +9,7 @@ audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
 audio.offload.video=true
 persist.vendor.audio.fluence.voicecall=true
+ro.af.client_heap_size_kbyte=7168
 ro.audio.flinger_standbytime_ms=300
 ro.vendor.audio.sdk.fluencetype=fluence
 vendor.audio_hal.period_size=192
