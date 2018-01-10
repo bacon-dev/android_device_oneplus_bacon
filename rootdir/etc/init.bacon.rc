@@ -17,7 +17,6 @@
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.qcom.power.rc
 import /vendor/etc/init/hw/init.qcom-common.rc
-import /vendor/etc/init/hw/init.fz.rc
 
 on init
     export LD_PRELOAD /system/lib/libboringssl-compat.so
@@ -155,8 +154,8 @@ on post-fs-data
     mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
 
-    # Create /data/time folder for time-services
-    mkdir /data/time 0700 system system
+    # Create folder for time-services
+    mkdir /data/vendor/time 0700 system system
 
     # Touchscreen
     chown system radio /proc/touchpanel/double_tap_enable
@@ -288,9 +287,10 @@ service thermal-engine /system/vendor/bin/thermal-engine
     socket thermal-recv-passive-client stream 0666 system system
 
 service time_daemon /system/vendor/bin/time_daemon
-    class late_start
-    user root
-    group root
+   class late_start
+   user system
+   group net_raw
+   capabilities SYS_TIME
 
 on property:vold.decrypt=trigger_restart_framework
     start wcnss-service
