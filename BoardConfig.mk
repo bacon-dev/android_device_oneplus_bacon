@@ -38,20 +38,6 @@ TARGET_CPU_VARIANT := krait
 TARGET_BOARD_INFO_FILE ?= $(DEVICE_PATH)/board-info.txt
 TARGET_OTA_ASSERT_DEVICE := bacon,A0001
 
-# Kernel
-BOARD_DTBTOOL_ARGS := --force-v2
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_IMAGE_NAME := zImage
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
-LZMA_RAMDISK_TARGETS := [boot,recovery]
-TARGET_KERNEL_ARCH := arm
-
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
-TARGET_KERNEL_CONFIG := lineageos_bacon_defconfig
-TARGET_KERNEL_SOURCE := kernel/oppo/msm8974
-
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
@@ -86,6 +72,12 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(DEVICE_PATH)/charger/images
+
+# Dex optimizion
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -125,6 +117,20 @@ USE_OPENGL_RENDERER := true
 TARGET_INIT_VENDOR_LIB := libinit_msm8974
 TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8974
 TARGET_LIBINIT_MSM8974_DEFINES_FILE := $(DEVICE_PATH)/init/init_bacon.cpp
+
+# Kernel
+BOARD_DTBTOOL_ARGS := --force-v2
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_IMAGE_NAME := zImage
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_SEPARATED_DT := true
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
+LZMA_RAMDISK_TARGETS := [boot,recovery]
+TARGET_KERNEL_ARCH := arm
+
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
+TARGET_KERNEL_CONFIG := lineageos_bacon_defconfig
+TARGET_KERNEL_SOURCE := kernel/oppo/msm8974
 
 # Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
