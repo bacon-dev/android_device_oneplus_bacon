@@ -71,6 +71,12 @@ ro.data.large_tcp_window_size=true
 ro.qualcomm.perf.cores_online=2
 ro.vendor.extension_library=libqti-perfd-client.so
 
+# Play store
+ro.com.google.clientidbase.am=android-oneplus
+ro.com.google.clientidbase.gmm=android-oneplus
+ro.com.google.clientidbase.ms=android-oneplus
+ro.com.google.clientidbase.yt=android-oneplus
+
 # Radio
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
 persist.radio.add_power_save=1
