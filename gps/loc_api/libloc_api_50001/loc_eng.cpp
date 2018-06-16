@@ -828,7 +828,7 @@ void LocEngReportPosition::send() const {
 
 //        case LOC_ENG_MSG_REPORT_SV:
 LocEngReportSv::LocEngReportSv(LocAdapterBase* adapter,
-                               HaxxSvStatus &sv,
+                               GnssSvStatus &sv,
                                GpsLocationExtended &locExtended,
                                void* svExt) :
     LocMsg(), mAdapter(adapter), mSvStatus(sv),
@@ -891,9 +891,9 @@ inline void LocEngReportStatus::log() const {
 //        case LOC_ENG_MSG_REPORT_NMEA:
 LocEngReportNmea::LocEngReportNmea(void* locEng,
                                    const char* data, int len) :
-    LocMsg(), mLocEng(locEng), mNmea(new char[len+1]), mLen(len)
+    LocMsg(), mLocEng(locEng), mNmea(new char[len]), mLen(len)
 {
-    strlcpy(mNmea, data, len+1);
+    memcpy((void*)mNmea, (void*)data, len);
     locallog();
 }
 void LocEngReportNmea::proc() const {
@@ -1387,7 +1387,6 @@ struct LocEngInit : public LocMsg {
     }
     inline virtual void proc() const {
         loc_eng_reinit(*mLocEng);
-        mLocEng->adapter->setGpsLock(1);
         // set the capabilities
         mLocEng->adapter->sendMsg(new LocEngSetCapabilities(mLocEng));
     }
