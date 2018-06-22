@@ -98,5 +98,8 @@ ro.qti.sensors.vmd=true
 # Time services
 persist.timed.enable=true
 
+# UI
+sys.use_fifo_ui=1
+
 # Wifi
 wifi.interface=wlan0
