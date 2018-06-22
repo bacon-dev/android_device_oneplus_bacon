@@ -51,6 +51,9 @@ persist.hwc.mdpcomp.enable=true
 ro.opengles.version=196608
 ro.sf.lcd_density=480
 
+# FIFO
+sys.use_fifo_ui=1
+
 # Media
 debug.stagefright.ccodec=0
 debug.stagefright.omx_default_rank=0
