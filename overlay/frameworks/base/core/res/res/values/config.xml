@@ -278,4 +278,7 @@
 
     <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
     <bool name="config_displayBlanksAfterDoze">true</bool>
+
+    <!-- Integer indicating wpa_supplicant scan interval in milliseconds -->
+    <integer translatable="false" name="config_wifi_supplicant_scan_interval">40000</integer>
 </resources>
