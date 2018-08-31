@@ -4,7 +4,6 @@
 
 # Audio
 af.fast_track_multiplier=1
-audio.deep_buffer.media=true
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
 audio.offload.video=true
