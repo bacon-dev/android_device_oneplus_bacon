@@ -80,7 +80,7 @@ ro.min.fling_velocity=160
 ro.max.fling_velocity=20000
 
 # Media
-mm.enable.smoothstreaming=true
+mm.enable.sec.smoothstreaming=true
 media.aac_51_output_enabled=true
 
 # Memory optimizations
