@@ -324,8 +324,10 @@ TARGET_LD_SHIM_LIBS := \
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
-    telephony-ext \
     ims_ext_common.xml \
+    telephony-ext \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
     qti-telephony-common
 
 PRODUCT_BOOT_JARS += \
