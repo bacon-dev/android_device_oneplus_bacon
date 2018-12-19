@@ -321,7 +321,13 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so \
     /system/vendor/lib/libmmqjpeg_codec.so|libboringssl-compat.so
 
-PRODUCT_PACKAGES += qti-telephony-common
+# Telephony
+PRODUCT_PACKAGES += \
+    telephony-ext \
+    qti-telephony-common
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 PRODUCT_PACKAGES += \
 	librecovery_updater_oppo
