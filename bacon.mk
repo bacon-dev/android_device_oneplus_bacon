@@ -199,7 +199,7 @@ PRODUCT_PACKAGES += \
 
 # Keylayout
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/synaptics-rmi-ts.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/synaptics-rmi-ts.kl
+    $(LOCAL_PATH)/configs/synaptics-rmi-ts.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics-rmi-ts.kl
 
 # NFC
 ifeq ($(TARGET_BUILD_VARIANT),user)
