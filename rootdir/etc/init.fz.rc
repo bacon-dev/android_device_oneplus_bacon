@@ -1,0 +1,36 @@
+on property:sys.boot_completed=1
+    # according to Qcom this legacy value improves first launch latencies
+    # stock value is 512k
+    setprop dalvik.vm.heapminfree 2m
+
+    # Stock default settings
+    write /sys/kernel/msm_limiter/suspend_min_freq "0:268800 1:268800 2:268800 3:268800"
+    write /sys/kernel/msm_limiter/resume_max_freq "0:1958400 1:1958400 2:1958400 3:1958400"
+    write /sys/kernel/msm_limiter/suspend_max_freq "0:652800 1:652800 2:652800 3:652800"
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 652800
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "95 652800:85 960000:75 1267200:80 1500000:90 1800000:98"
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 0
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack "-1"
+
+    # cpu-boost
+    write /sys/module/cpu_boost/parameters/boost_ms 0
+    write /sys/module/cpu_boost/parameters/sync_threshold 0
+    write /sys/module/cpu_boost/parameters/input_boost_ms 1400
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1190400 1:1190400 2:1190400 3:1190400"
+
+    # Power efficient workqueues
+    chmod 644 /sys/module/workqueue/parameters/power_efficient
+    write /sys/module/workqueue/parameters/power_efficient "Y"
+
+    # Multicore power saving
+    write /sys/devices/system/cpu/sched_mc_power_savings 1
+
+    # I/O
+    write /sys/block/mmcblk0/queue/iostats 0
+    write /sys/block/mmcblk0/queue/scheduler "maple"
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048

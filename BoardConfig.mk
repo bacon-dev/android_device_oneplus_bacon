@@ -53,7 +53,7 @@ TARGET_KERNEL_ARCH := arm
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += androidboot.btmacaddr=00:00:00:00:00:00
-TARGET_KERNEL_CONFIG := lineageos_bacon_defconfig
+TARGET_KERNEL_CONFIG := fz_bacon_defconfig
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8974
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-linux-eabi-HyperTC-4.9/bin

@@ -14,8 +14,11 @@
 # limitations under the License.
 #
 
+
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.qcom.power.rc
+import /vendor/etc/init/hw/init.qcom-common.rc
+import /vendor/etc/init/hw/init.fz.rc
 
 on init
     export LD_PRELOAD /system/lib/libboringssl-compat.so
