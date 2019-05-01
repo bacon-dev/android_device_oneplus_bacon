@@ -5,6 +5,7 @@ allow system_server proc_last_kmsg:file r_file_perms;
 allow system_server init:binder { call transfer };
 allow system_server unlabeled:file { unlink };
 allow system_server crash_dump:process { getpgid };
+allow system_server default_android_service:service_manager { add };
 
 # examine battery state
 r_dir_file(system_server, sysfs_usb_supply);

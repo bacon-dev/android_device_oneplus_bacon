@@ -6,6 +6,7 @@ allow init vendor_file:file { execute_no_trans };
 allow init hwservicemanager:binder { call transfer };
 allow init hal_usb_hwservice:hwservice_manager { add };
 allow init hidl_base_hwservice:hwservice_manager { add };
-allow init system_file:file { mounton };
+allow init system_file:file { mounton execute_no_trans };
 
 binder_call(init, system_server)
+
