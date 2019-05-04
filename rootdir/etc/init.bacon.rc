@@ -106,6 +106,10 @@ on boot
     chmod 0660 /proc/touchpanel/double_tap_enable
 
 on post-fs-data
+    # Torch
+    chown system camera /sys/class/leds/torch-light/brightness
+    chmod 0660 /sys/class/leds/torch-light/brightness
+
     # Create OPPO NV item directory
     mkdir /data/opponvitems 0771 radio radio
 
@@ -140,6 +144,8 @@ on post-fs-data
     mkdir /data/misc/camera 0770 camera camera
 
 on fs
+    mount_all /vendor/etc/fstab.bacon
+
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000

@@ -15,9 +15,9 @@
 #
 
 # inherit from OPPO common
--include device/oppo/common/BoardConfigCommon.mk
+include device/oppo/common/BoardConfigCommon.mk
 
-PLATFORM_PATH := device/oppo/msm8974-common
+DEVICE_PATH := $(DEVICE_PATH)
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
@@ -35,7 +35,8 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
 
 # Assertions
-TARGET_BOARD_INFO_FILE ?= $(PLATFORM_PATH)/board-info.txt
+TARGET_BOARD_INFO_FILE ?= $(DEVICE_PATH)/board-info.txt
+TARGET_OTA_ASSERT_DEVICE := bacon,A0001
 
 # Kernel
 BOARD_DTBTOOL_ARGS := --force-v2
@@ -46,6 +47,10 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
 LZMA_RAMDISK_TARGETS := [boot,recovery]
 TARGET_KERNEL_ARCH := arm
+
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
+TARGET_KERNEL_CONFIG := lineageos_bacon_defconfig
+TARGET_KERNEL_SOURCE := kernel/oppo/msm8974
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -60,6 +65,8 @@ AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
+AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
+AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
@@ -68,15 +75,17 @@ TARGET_USES_64_BIT_BINDER := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
 # Camera
 TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=23
+USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
-BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(PLATFORM_PATH)/charger/images
+BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(DEVICE_PATH)/charger/images
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -93,6 +102,15 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
+BOARD_BOOTIMAGE_PARTITION_SIZE     := 16777216
+BOARD_CACHEIMAGE_PARTITION_SIZE    := 536870912
+BOARD_PERSISTIMAGE_PARTITION_SIZE  := 33554432
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
+BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 1388314624
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 13271448576
+BOARD_USERDATAEXTRAIMAGE_PARTITION_SIZE := 59914792960
+BOARD_USERDATAEXTRAIMAGE_PARTITION_NAME := 64G
+
 # Graphics
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
@@ -106,6 +124,7 @@ USE_OPENGL_RENDERER := true
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm8974
 TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8974
+TARGET_LIBINIT_MSM8974_DEFINES_FILE := $(DEVICE_PATH)/init/init_bacon.cpp
 
 # Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
@@ -120,7 +139,7 @@ TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 TARGET_USES_INTERACTION_BOOST := true
 
 # Properties
-TARGET_SYSTEM_PROP += $(PLATFORM_PATH)/system.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -128,17 +147,27 @@ BOARD_USES_QCOM_HARDWARE := true
 # Radio
 TARGET_RIL_VARIANT := caf
 
+# Recovery
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.recovery
+
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+# Shipping API
+PRODUCT_SHIPPING_API_LEVEL := 19
+
+# Snapdragon LLVM
+TARGET_USE_SDCLANG := true
 
 # TWRP
 ifeq ($(WITH_TWRP),true)
-TARGET_RECOVERY_DEVICE_DIRS += $(PLATFORM_PATH)/twrp
+TARGET_RECOVERY_DEVICE_DIRS += $(DEVICE_PATH)/twrp
 TW_INCLUDE_CRYPTO := true
 TW_CRYPTO_USE_SBIN_VOLD := true
 TW_THEME := portrait_hdpi
+BOARD_HAS_NO_REAL_SDCARD := true
+RECOVERY_SDCARD_ON_DATA := true
 endif
 
 # Wifi
@@ -157,4 +186,4 @@ WIFI_DRIVER_FW_PATH_AP           := "ap"
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 
 # Inherit from the proprietary version
-include vendor/oppo/msm8974-common/BoardConfigVendor.mk
+include vendor/oneplus/bacon/BoardConfigVendor.mk

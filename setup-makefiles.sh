@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-# Copyright (C) 2016 The CyanogenMod Project
 # Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,3 +63,7 @@ write_makefiles "$MY_DIR"/../../$DEVICE_VENDOR/$DEVICE/device-proprietary-files.
 
 # Finish
 write_footers
+
+export DEVICE=bacon
+export DEVICE_COMMON=msm8974-common
+export VENDOR=oneplus

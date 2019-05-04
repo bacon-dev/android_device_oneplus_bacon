@@ -1,1 +1,4 @@
-dontaudit vold proc_touchpanel:dir { open read };
+dontaudit vold proc_touchpanel:dir { open read }; =======
+
+# Encryption
+allow vold reserve4_block_device:blk_file rw_file_perms;
