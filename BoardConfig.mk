@@ -14,10 +14,10 @@
 # limitations under the License.
 #
 
-# inherit from OPPO common
+# Inherit from OPPO common
 include device/oppo/common/BoardConfigCommon.mk
 
-DEVICE_PATH := $(DEVICE_PATH)
+DEVICE_PATH := device/oneplus/bacon
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
@@ -150,8 +150,9 @@ LZMA_RAMDISK_TARGETS := [boot,recovery]
 TARGET_KERNEL_ARCH := arm
 
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 pm.sleep_mode=1
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 TARGET_KERNEL_CONFIG := lineageos_bacon_defconfig
-TARGET_KERNEL_SOURCE := kernel/oppo/msm8974
+TARGET_KERNEL_SOURCE := kernel/oneplus/msm8974
 
 # Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
