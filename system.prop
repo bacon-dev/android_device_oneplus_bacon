@@ -52,6 +52,7 @@ ro.opengles.version=196608
 ro.sf.lcd_density=480
 
 # Media
+debug.stagefright.ccodec=0
 mm.enable.sec.smoothstreaming=true
 media.aac_51_output_enabled=true
 
