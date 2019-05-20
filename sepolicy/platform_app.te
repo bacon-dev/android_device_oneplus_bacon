@@ -1,0 +1,2 @@
+#============= platform_app ==============
+allow platform_app camera_prop:file { read getattr open };
