@@ -98,6 +98,9 @@ BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(DEVICE_PATH)/charger/images
 # DT2W
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
+#DUP
+BUILD_BROKEN_DUP_RULES := true
+
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
 TARGET_LEGACY_HW_DISK_ENCRYPTION := true
