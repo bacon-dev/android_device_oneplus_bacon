@@ -166,9 +166,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.recovery
 include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
-# Shipping API
-PRODUCT_SHIPPING_API_LEVEL := 19
-
 # Snapdragon LLVM
 TARGET_USE_SDCLANG := true
 

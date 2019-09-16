@@ -24,6 +24,9 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
+# Shipping API
+PRODUCT_SHIPPING_API_LEVEL := 19
+
 # AOSP Packages
 PRODUCT_PACKAGES += \
     messaging \
