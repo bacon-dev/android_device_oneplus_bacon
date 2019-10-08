@@ -323,3 +323,6 @@ $(call inherit-product, vendor/oneplus/bacon/bacon-vendor.mk)
 
 # Inherit from oppo-common
 #$(call inherit-product, device/oppo/common/common.mk)
+
+#inherit our OneplusShit
+$(call inherit-product, device/oneplus/OneplusShit/opshit.mk)
