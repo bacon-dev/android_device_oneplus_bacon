@@ -97,7 +97,6 @@ vendor/lib/libsystem_health_mon.so
 -app/shutdownlistener/shutdownlistener.apk:vendor/app/shutdownlistener/shutdownlistener.apk
 bin/netmgrd:vendor/bin/netmgrd|6d953fa4d4614ff6a56db9b7078be343da093e44
 bin/qmuxd:vendor/bin/qmuxd
-bin/radish:vendor/bin/radish
 bin/rfs_access:vendor/bin/rfs_access
 bin/rmt_storage:vendor/bin/rmt_storage
 etc/data/dsi_config.xml:vendor/etc/data/dsi_config.xml
