@@ -246,7 +246,6 @@ service charger /system/bin/charger
     user system
     group system graphics input
     critical
-    seclabel u:r:charger:s0
 
 on charger
     write /sys/class/leds/lcd-backlight/brightness 100
@@ -283,7 +282,6 @@ service hciattach /system/vendor/bin/init.qcom.bt.sh
     user bluetooth
     group bluetooth net_bt_admin oem_2950 diag radio
     disabled
-    seclabel u:r:bluetooth_loader:s0
     oneshot
 
 on property:vendor.bluetooth.hciattach=true
