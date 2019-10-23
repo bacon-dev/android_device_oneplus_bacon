@@ -178,7 +178,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.recovery
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy_tmp
 
 # Snapdragon LLVM
-TARGET_USE_SDCLANG := true
+#TARGET_USE_SDCLANG := true
 
 # TWRP
 ifeq ($(WITH_TWRP),true)
