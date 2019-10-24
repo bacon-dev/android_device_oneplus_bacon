@@ -16,6 +16,7 @@ vendor/lib/soundfx/libqcvirt.so
 # Bluetooth
 bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
 vendor/lib/libbtnv.so
+vendor/bin/libnbtool.so
 
 # DRM
 bin/qseecomd:vendor/bin/qseecomd
