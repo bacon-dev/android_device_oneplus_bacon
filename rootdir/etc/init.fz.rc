@@ -31,14 +31,15 @@ on stock_profile
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
 
     # interactive profile
+    restorecon_recursive /sys/devices/system/cpu/cpufreq/interactive
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 0
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 100
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 0
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "90 652800:85 1190400:60 1500000:75 1700000:95 1958400:98"
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1036800:60 1300000:70 1600000:80 1800000:98"
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 39000
-    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 99000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
+    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 99000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 30000
 
     # cpu-boost
@@ -62,8 +63,20 @@ on stock_profile
     write /sys/block/mmcblk0/queue/add_random 0
     write /sys/block/mmcblk0/queue/read_ahead_kb 512
 
+    # KSM
+    write /sys/kernel/mm/ksm/sleep_millisecs 1500
+    write /sys/kernel/mm/ksm/pages_to_scan 256
+    write /sys/kernel/mm/ksm/deferred_timer 1
+    write /sys/kernel/mm/ksm/run 0
+
     # Prevent mmc from scaling its clk down when performing writes
     write /sys/class/mmc_host/mmc0/clk_scaling/scale_down_in_low_wr_load 1
+
+    # LMK
+    exec u:r:magisk:s0 -- /system/bin/mkswap /dev/block/zram0
+    exec u:r:magisk:s0 -- /system/bin/swapon /dev/block/zram0
+    write /proc/sys/vm/swappiness 100
+    write /sys/module/lowmemorykiller/parameters/minfree "18432,23040,27648,32256,36864,46080"
 
     # block wakeup sources
     write /sys/module/wakeup/parameters/enable_qcom_rx_wakelock_ws 0
@@ -74,6 +87,16 @@ on stock_profile
     write /sys/module/wakeup/parameters/enable_timerfd_ws 0
     write /sys/module/wakeup/parameters/enable_netlink_ws 0
     write /sys/module/wakeup/parameters/enable_netmgr_wl_ws 0
+
+on init
+    write /sys/block/zram0/comp_algorithm lz4
+    write /sys/block/zram0/max_comp_streams 4
+    write /sys/block/zram0/disksize 512M
+
+    write /proc/sys/vm/page-cluster 0
+
+on early-init
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
 
 on property:sys.boot_completed=1
     # according to Qcom this legacy value improves first launch latencies
