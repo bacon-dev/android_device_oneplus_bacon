@@ -87,6 +87,9 @@ ro.qti.sensors.gtap=true
 ro.qti.sensors.ir_proximity=true
 ro.qti.sensors.vmd=true
 
+# Surfaceflinger
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+
 # Time services
 persist.timed.enable=true
 

@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Inherit from OPPO common
-#include device/oppo/common/BoardConfigCommon.mk
-
 DEVICE_PATH := device/oneplus/bacon
 
 # Bootloader
@@ -65,7 +62,7 @@ BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oppo
 TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 
-#APEX
+# APEX
 TARGET_FLATTEN_APEX := true
 
 # Audio
@@ -89,7 +86,6 @@ USE_LEGACY_AUDIO_POLICY := 1
 # Binder
 TARGET_USES_64_BIT_BINDER := true
 
-
 # Bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
@@ -98,7 +94,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=23
-USE_DEVICE_SPECIFIC_CAMERA := true
 APPLY_MSM8974_1440P_EGL_WORKAROUND := true
 HAS_LEGACY_CAMERA_HAL1 := true
 
@@ -109,10 +104,10 @@ BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(DEVICE_PATH)/charger/images
 # DT2W
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
-#DUP
+# DUP
 BUILD_BROKEN_DUP_RULES := true
 
-#PHONY
+# PHONY
 BUILD_BROKEN_PHONY_TARGETS := true
 
 # Encryption
@@ -142,10 +137,8 @@ BOARD_USERDATAEXTRAIMAGE_PARTITION_SIZE := 59914792960
 BOARD_USERDATAEXTRAIMAGE_PARTITION_NAME := 64G
 
 # Graphics
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_USE_COMPAT_GRALLOC_PERFORM := true
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000U
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
@@ -185,9 +178,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.recovery
 # SELinux
 #include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy_tmp
-
-# Snapdragon LLVM
-#TARGET_USE_SDCLANG := true
 
 # TWRP
 ifeq ($(WITH_TWRP),true)
