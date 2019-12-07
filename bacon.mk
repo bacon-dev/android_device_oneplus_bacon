@@ -254,7 +254,8 @@ PRODUCT_PACKAGES += \
     init.fz.rc \
     init.qcom.usb.rc \
     init.recovery.bacon.rc \
-    ueventd.bacon.rc \
+    init.safailnet.rc\
+    ueventd.bacon.rc 
 
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh
