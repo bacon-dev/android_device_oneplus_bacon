@@ -33,37 +33,15 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := krait
 
-# Assertions
-TARGET_BOARD_INFO_FILE ?= $(DEVICE_PATH)/board-info.txt
-TARGET_OTA_ASSERT_DEVICE := bacon,A0001
-
-# Kernel
-BOARD_DTBTOOL_ARGS := --force-v2
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_IMAGE_NAME := zImage
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
-LZMA_RAMDISK_TARGETS := [boot,recovery]
-TARGET_KERNEL_ARCH := arm
-
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-BOARD_KERNEL_CMDLINE += androidboot.btmacaddr=00:00:00:00:00:00
-TARGET_KERNEL_CONFIG := fz_bacon_defconfig
-TARGET_KERNEL_SOURCE := kernel/oneplus/msm8974
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
-KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-linux-eabi-linaro-7/bin
-
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
-# Releasetools
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oppo
-TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
-
 # APEX
 TARGET_FLATTEN_APEX := true
+
+# Assertions
+TARGET_BOARD_INFO_FILE ?= $(DEVICE_PATH)/board-info.txt
+TARGET_OTA_ASSERT_DEVICE := bacon,A0001
 
 # Audio
 AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := false
@@ -82,7 +60,6 @@ BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 0
 USE_XML_AUDIO_POLICY_CONF := 1
 USE_LEGACY_AUDIO_POLICY := 1
-
 
 # Binder
 TARGET_USES_64_BIT_BINDER := true
@@ -107,9 +84,6 @@ TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
 # DUP
 BUILD_BROKEN_DUP_RULES := true
-
-# PHONY
-BUILD_BROKEN_PHONY_TARGETS := true
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -154,11 +128,32 @@ TARGET_INIT_VENDOR_LIB := libinit_msm8974
 TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8974
 TARGET_LIBINIT_MSM8974_DEFINES_FILE := $(DEVICE_PATH)/init/init_bacon.cpp
 
+# Kernel
+BOARD_DTBTOOL_ARGS := --force-v2
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_IMAGE_NAME := zImage
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_SEPARATED_DT := true
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
+LZMA_RAMDISK_TARGETS := [boot,recovery]
+TARGET_KERNEL_ARCH := arm
+
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.btmacaddr=00:00:00:00:00:00
+TARGET_KERNEL_CONFIG := fz_bacon_defconfig
+TARGET_KERNEL_SOURCE := kernel/oneplus/msm8974
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-linux-eabi-linaro-7/bin
+
 # Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
+
+# PHONY
+BUILD_BROKEN_PHONY_TARGETS := true
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
@@ -171,6 +166,10 @@ TARGET_USES_OLD_MNC_FORMAT := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.recovery
+
+# Releasetools
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oppo
+TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 
 # SELinux
 #include device/qcom/sepolicy-legacy/sepolicy.mk
@@ -186,7 +185,7 @@ BOARD_HAS_NO_REAL_SDCARD := true
 RECOVERY_SDCARD_ON_DATA := true
 endif
 
-# Wifi
+# Wi-Fi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
