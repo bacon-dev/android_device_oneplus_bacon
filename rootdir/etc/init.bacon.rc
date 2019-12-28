@@ -128,13 +128,6 @@ on boot
     chown root system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chmod 0660 /sys/devices/virtual/timed_output/vibrator/vtg_level
 
-on post-fs
-
-    # Avoid USB crash
-    setprop persist.adb.nonblocking_ffs 0
-    setprop ro.adb.nonblocking_ffs 0
-    setprop sys.usb.mtp.device_type 2
-
 on post-fs-data
     # Torch
     chown system camera /sys/class/leds/torch-light/brightness
@@ -193,12 +186,6 @@ on post-fs-data
 
 on fs
     mount_all /vendor/etc/fstab.bacon
-
-    mkdir /dev/usb-ffs 0770 shell shell
-    mkdir /dev/usb-ffs/adb 0770 shell shell
-    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
-    write /sys/class/android_usb/android0/f_ffs/aliases adb
-    setprop sys.usb.ffs.aio_compat 1
 
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
