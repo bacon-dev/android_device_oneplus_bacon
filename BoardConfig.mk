@@ -185,6 +185,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
+PLATFORM_SEPOLICY_VERSION_TEST := false
+
 # TWRP
 ifeq ($(WITH_TWRP),true)
 TARGET_RECOVERY_DEVICE_DIRS += $(DEVICE_PATH)/twrp
