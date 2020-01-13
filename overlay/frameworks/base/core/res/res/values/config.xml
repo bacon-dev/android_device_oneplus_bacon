@@ -330,4 +330,12 @@
 
     <!-- Should the pinner service pin the Home application? -->
     <bool name="config_pinnerHomeApp">true</bool>
+
+    <!-- SysInfo for OnePlus One -->
+    <string name="config_sysCPUTemp">/sys/class/thermal/thermal_zone7/temp</string>
+    <string name="config_sysBatteryTemp">/sys/class/power_supply/battery/temp</string>
+    <string name="config_sysGPUFreq">/sys/class/kgsl/kgsl-3d0/gpufreq_mhz</string>
+    <string name="config_sysGPULoad">/sys/class/kgsl/kgsl-3d0/gpubusy_percentage</string>
+    <integer name="config_sysCPUTempMultiplier">1</integer>
+    <integer name="config_sysBatteryTempMultiplier">10</integer>
 </resources>
