@@ -13,3 +13,7 @@
 
 # Firmware files
 /firmware(/.*)?                                         							u:object_r:firmware_file:s0
+
+# cgroup
+/dev/cpuset(/.*)?                  													u:object_r:cgroup:s0
+/dev/stune(/.*)?                   													u:object_r:cgroup:s0
