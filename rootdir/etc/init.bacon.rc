@@ -126,6 +126,9 @@ on boot
     chown root system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chmod 0660 /sys/devices/virtual/timed_output/vibrator/vtg_level
 
+on post-fs
+    start qseecomd
+
 on post-fs-data
     # Torch
     chown system camera /sys/class/leds/torch-light/brightness
@@ -256,6 +259,7 @@ service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
     group root
+    disabled
 
 service charger /system/bin/charger
     class charger
