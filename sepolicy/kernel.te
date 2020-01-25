@@ -1,2 +1,0 @@
-#============= kernel ==============
-allow kernel debugfs_mmc:dir search;

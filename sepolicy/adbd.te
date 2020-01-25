@@ -1,2 +1,0 @@
-#============= adbd ==============
-allow adbd proc:file getattr;

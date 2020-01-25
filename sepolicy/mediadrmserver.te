@@ -1,3 +1,0 @@
-#============= mediadrmserver ==============
-allow mediadrmserver media_data_file:dir search;
-
