@@ -8,3 +8,5 @@ allow priv_app adb_data_file:file r_file_perms;
 
 allow priv_app device:dir { getattr open };
 allow priv_app proc_interrupts:file { getattr open };
+
+allow priv_app theme_prop:file { getattr open read };
