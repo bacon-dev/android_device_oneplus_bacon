@@ -54,6 +54,9 @@ ro.sf.lcd_density=480
 # FIFO
 sys.use_fifo_ui=1
 
+# Maintainer
+ro.xtended.maintainer=xawlw
+
 # Media
 debug.stagefright.ccodec=0
 debug.stagefright.omx_default_rank=0
