@@ -1,0 +1,19 @@
+[
+  {
+    "remote": "github",
+    "repository": "Feinzer/fz_kernel_oneplus_msm8974",
+    "target_path": "kernel/oneplus/msm8974",
+    "branch": "fz-ten"
+  },
+  {
+    "repository": "android_vendor_oneplus_bacon",
+    "target_path": "vendor/oneplus/bacon",
+    "branch": "xq"
+  },
+  {
+    "remote": "github",
+    "repository": "bacon-dev/prebuilts_gcc_linux-x86_arm_arm-eabi-linaro-7",
+    "target_path": "prebuilts/gcc/linux-x86/arm/arm-eabi-linaro-7",
+    "branch": "master"
+  }
+]
