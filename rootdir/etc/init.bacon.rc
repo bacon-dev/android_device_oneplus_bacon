@@ -14,7 +14,6 @@
 # limitations under the License.
 #
 
-
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.qcom.power.rc
 import /vendor/etc/init/hw/init.qcom-common.rc
@@ -190,6 +189,8 @@ on fs
     mkdir /dev/bus/usb 0755 root root
 
     restorecon_recursive /persist
+
+    mount none /system/etc/gps.conf /system/etc/gps_debug.conf bind
 
 service rmt_storage /system/vendor/bin/rmt_storage
     class core
