@@ -54,9 +54,6 @@ ro.sf.lcd_density=480
 # FIFO
 sys.use_fifo_ui=1
 
-# Maintainer
-ro.xtended.maintainer=xawlw
-
 # Media
 debug.stagefright.ccodec=0
 debug.stagefright.omx_default_rank=0
@@ -72,6 +69,9 @@ persist.data.netmgrd.qos.enable=true
 persist.data.qmi.adb_logmask=0
 persist.data.tcpackprio.enable=true
 ro.data.large_tcp_window_size=true
+
+# ParanoidDoze
+ro.sensor.proximity=true
 
 # Perf
 ro.qualcomm.perf.cores_online=2

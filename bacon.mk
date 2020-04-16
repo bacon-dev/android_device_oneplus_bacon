@@ -24,9 +24,6 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
-# Shipping API
-PRODUCT_SHIPPING_API_LEVEL := 19
-
 # AOSP Packages
 PRODUCT_PACKAGES += \
     messaging \
@@ -87,7 +84,6 @@ PRODUCT_PACKAGES += \
     Snap
 
 # Charger
-WITH_LINEAGE_CHARGER := false
 PRODUCT_PACKAGES += \
     charger_res_images
 
@@ -102,12 +98,14 @@ PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
 PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUI
 
 # Display
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# Doze
+PRODUCT_PACKAGES += \
+    ParanoidDoze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -162,10 +160,6 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
     android.hardware.light@2.0-service \
     lights.msm8974
-
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sysfs
 
 # Media profile
 PRODUCT_COPY_FILES += \
@@ -250,7 +244,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service-qti
+    android.hardware.power@1.2-service
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -272,10 +266,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
 
-# Seccomp
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
-
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
@@ -290,10 +280,6 @@ PRODUCT_COPY_FILES += \
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
-
-# Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2016-09-01
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -321,13 +307,8 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so \
     /system/vendor/lib/libmmqjpeg_codec.so|libboringssl-compat.so
 
-PRODUCT_PACKAGES += qti-telephony-common
-
 PRODUCT_PACKAGES += \
 	librecovery_updater_oppo
 
 # Call the proprietary setup
 $(call inherit-product, vendor/oneplus/bacon/bacon-vendor.mk)
-
-# Inherit our OneplusShit
-$(call inherit-product, device/oneplus/OneplusShit/opshit.mk)

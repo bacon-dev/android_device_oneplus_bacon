@@ -79,7 +79,6 @@ HAS_LEGACY_CAMERA_HAL1 := true
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
-BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(DEVICE_PATH)/charger/images
 
 # Dexpreopt
 ifeq ($(HOST_OS),linux)
@@ -113,7 +112,7 @@ BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-TARGET_FS_CONFIG_GEN := device/oneplus/bacon/config.fs
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 16777216
 BOARD_CACHEIMAGE_PARTITION_SIZE    := 536870912
@@ -151,7 +150,6 @@ LZMA_RAMDISK_TARGETS := [boot,recovery]
 TARGET_KERNEL_ARCH := arm
 
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += loop.max_part=7
 TARGET_KERNEL_CONFIG := fz_bacon_defconfig
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8974
@@ -164,6 +162,9 @@ TARGET_PROVIDES_LIBLIGHT := true
 # PHONY
 BUILD_BROKEN_PHONY_TARGETS := true
 
+# Power
+TARGET_USES_NON_LEGACY_POWERHAL := true
+
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
@@ -171,6 +172,7 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 BOARD_USES_QCOM_HARDWARE := true
 
 # Radio
+DISABLE_RILD_OEM_HOOK := false
 TARGET_USES_OLD_MNC_FORMAT := true
 
 # Recovery
@@ -181,10 +183,8 @@ TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oppo
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # SELinux
-include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
-
 PLATFORM_SEPOLICY_VERSION_TEST := false
 
 # TWRP

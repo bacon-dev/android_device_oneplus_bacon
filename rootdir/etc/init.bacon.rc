@@ -183,6 +183,9 @@ on post-fs-data
     # Camera sockets
     mkdir /data/misc/camera 0770 camera camera
 
+    # Start RIL daemon
+    start ril-daemon
+
 on fs
     mount_all /vendor/etc/fstab.bacon
 
