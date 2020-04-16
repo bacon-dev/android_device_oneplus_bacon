@@ -123,6 +123,14 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 13271448576
 BOARD_USERDATAEXTRAIMAGE_PARTITION_SIZE := 59914792960
 BOARD_USERDATAEXTRAIMAGE_PARTITION_NAME := 64G
 
+# Gestures
+TARGET_DRAW_V_NODE := "/proc/touchpanel/down_arrow_enable"
+TARGET_DRAW_INVERSE_V_NODE := "/proc/touchpanel/up_arrow_enable"
+TARGET_DRAW_O_NODE := "/proc/touchpanel/letter_o_enable"
+TARGET_DRAW_ARROW_LEFT_NODE := "/proc/touchpanel/left_arrow_enable"
+TARGET_DRAW_ARROW_RIGHT_NODE := "/proc/touchpanel/right_arrow_enable"
+TARGET_TWO_FINGER_SWIPE_NODE := "/proc/touchpanel/double_swipe_enable"
+
 # Graphics
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_USE_COMPAT_GRALLOC_PERFORM := true
