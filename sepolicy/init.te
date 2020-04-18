@@ -1,7 +1,10 @@
 allow init proc_last_kmsg:file { setattr r_file_perms };
 allow init proc_bluetooth_writable:file { setattr };
 allow init proc_cpu_alignment:file { w_file_perms };
+allow init self:netlink_socket { bind create getattr read setopt write };
+allow init shell_exec:file execute_no_trans;
 allow init sysfs_leds:lnk_file { read };
+allow init sysfs_wlan_fwpath:file { open write };
 allow init vendor_file:file { execute_no_trans };
 allow init hwservicemanager:binder { call transfer };
 allow init hal_usb_hwservice:hwservice_manager { add };
