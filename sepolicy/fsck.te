@@ -1,3 +1,4 @@
 allow fsck fsck:capability { dac_override dac_read_search };
 allow fsck tmpfs:blk_file { getattr };
+allow fsck persist_block_device:blk_file { open read };
 allow fsck persist_file:dir { getattr };
